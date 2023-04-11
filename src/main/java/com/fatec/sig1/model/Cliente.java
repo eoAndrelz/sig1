@@ -27,6 +27,7 @@ public class Cliente {
 	@Pattern(regexp = "^(0?[1-9]|[12][0-9]|3[01])[\\/-](0?[1-9]|1[012])[\\/-]\\d{4}$", message = "A data de nascimento deve estar no formato dd/MM/YYYY")
 //https://www.regular-expressions.info/
 	private String dataNascimento;
+	private String dataCadastro;
 	private String telefone;
 	@NotBlank(message = "Sexo M/F")
 	private String sexo;
@@ -39,7 +40,8 @@ public class Cliente {
 	@NotBlank(message = "O complemento deve ser informado")
 	private String complemento;
 
-	public Cliente(String nome, String dataNascimento,String telefone, String sexo, String cpf, String cep, String complemento) {
+	public Cliente(String nome, String dataNascimento, String telefone, String sexo, String cpf, String cep,
+			String complemento) {
 		this.nome = nome;
 		setDataNascimento(dataNascimento);
 		this.telefone = telefone;
@@ -120,8 +122,15 @@ public class Cliente {
 		this.endereco = endereco;
 	}
 
+	public void setDataCadastro(DateTime dataAtual) { this.dataCadastro = obtemDataAtual(dataAtual);
+	}
+
 	public String getComplemento() {
 		return complemento;
+	}
+
+	public String getDataCadastro() {
+		return dataCadastro;
 	}
 
 	public void setComplemento(String complemento) {
